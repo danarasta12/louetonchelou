@@ -1,0 +1,24 @@
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f0f0f0; /* Change the background color as needed */
+  padding: 10px;
+}
+
+.left-content {
+  display: flex;
+  align-items: center;
+}
+
+
+.right-content a {
+  margin-left: 10px;
+  color: #333; /* Adjust the color as needed */
+  text-decoration: none;
+  font-size: 20px; /* Adjust the size of the icons as needed */
+}
+
+.right-content a:hover {
+  color: #007bff; /* Change the hover color as needed */
+}
