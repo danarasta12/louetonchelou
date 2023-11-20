@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   resources :talents, only: [:index, :show, :create, :edit, :update, :destroy]
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  #root "pages#home"
 end
