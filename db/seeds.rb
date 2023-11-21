@@ -3,6 +3,7 @@ require "date"
 
 puts "Destroy user"
 User.destroy_all
+Booking.destroy_all
 
 puts "Creating 20 users"
 
@@ -31,5 +32,11 @@ puts "Creating 20 users"
     )
   end
 end
+Booking.create(
+  start_date: Date.new(2023, rand(1..12), rand(1..29)),
+  end_date: Date.new(2023, 12, 12),
+  address: '18 Villa Gaudelet, 75011 Paris'
+)
 
+puts "1 booking created"
 puts "Done"
