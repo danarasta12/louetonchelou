@@ -1,8 +1,6 @@
 .footer-content {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  background-color: #f0f0f0; /* Change the background color as needed */
+  background-color: $medium-red;
   padding: 10px;
 }
 
@@ -14,11 +12,11 @@
 
 .right-content a {
   margin-left: 10px;
-  color: #333; /* Adjust the color as needed */
+  color: $light-orange;
   text-decoration: none;
-  font-size: 20px; /* Adjust the size of the icons as needed */
+  font-size: 20px;
 }
 
 .right-content a:hover {
-  color: #007bff; /* Change the hover color as needed */
+  color: $black;
 }
