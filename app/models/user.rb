@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :bookings
-  has_many :talents
+  has_many :talents, dependent: :destroy
 
   validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@[^@\s]+\z/ }
   validates :first_name, presence: true
@@ -16,7 +16,7 @@ class User < ApplicationRecord
   private
 
   def validate_age
-    if date_of_birth.present? && date_of_birth > 18.years.ago.to_d
+    if date_of_birth.present? && date_of_birth.year > 2005
       errors.add(:date_of_birth, 'You should be over 18 years old.')
     end
   end
