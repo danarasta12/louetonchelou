@@ -11,12 +11,12 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :password, presence: true
   validates :sex, presence: true
-  validates :validate_age
+  before_validation :validate_age
 
   private
 
   def validate_age
-    if date_of_birth.present? && date_of_birth > 18.years.ago.to_d
+    if date_of_birth.present? && date_of_birth.year > 2005
       errors.add(:date_of_birth, 'You should be over 18 years old.')
     end
   end
