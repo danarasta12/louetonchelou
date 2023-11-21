@@ -1,6 +1,27 @@
 <h1>Talents#index</h1>
 <p>Find me in app/views/talents/index.html.erb</p>
 
-<% @talents.each do |talent| %>
-<%= talent.pseudo %>
-<% end %>
+<section class="search-filters">
+  <!-- Ajoutez vos filtres de recherche ici si nécessaire -->
+</section>
+
+<section class="talent-list">
+  <div class="row">
+    <% @talents.each do |talent| %>
+      <div class="col-md-3 talent-card">
+        <a href="<%= talent_path(talent) %>" class="card-link">
+          <div class="card">
+            <img src="<%= talent.medias %>" class="card-img-top" alt="Talent picture">
+            <div class="card-body">
+              <h5 class="card-title"><%= talent.pseudo %></h5>
+              <p class="card-text">Type: <%= talent.talent_type %></p>
+              <p class="card-text">Working Area: <%= talent.working_area %></p>
+            </div>
+          </div>
+        </a>
+      </div>
+    <% end %>
+  </div>
+</section>
+
+
