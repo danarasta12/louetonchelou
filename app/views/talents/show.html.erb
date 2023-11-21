@@ -1,4 +1,3 @@
-
 <div class="container">
   <h2><%= @talent.pseudo %></h2>
   <div class="talent-infos-recap">
@@ -55,3 +54,6 @@
 </div>
 
 <%# url(<%=list.photo.attached? ? cl_image_tag(list.photo.key) :asset_path('back_ground.jpg')%>
+<% @talent.medias.each do |photo| %>
+  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>

@@ -1,5 +1,7 @@
 .footer-content {
-  align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   background-color: $medium-red;
   padding: 10px;
 }

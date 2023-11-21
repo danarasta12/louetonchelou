@@ -1,7 +1,6 @@
 class TalentsController < ApplicationController
   # skip_before_action :authenticate_user!, only: :home
-  before_action :set_talent, only: %i[create edit update]
-  # :set_user
+  before_action :set_talent, only: %i[create show edit update]
 
   def show
     @talent = Talent.find(params[:id])
@@ -14,18 +13,21 @@ class TalentsController < ApplicationController
     end
   end
 
+  def new
+    @talent = Talent.new
+  end
+
   def index
     @talents = Talent.all
   end
 
   def create
-    @user = User.find(params[:user_id])
     @talent = Talent.new(talent_params)
-    @talent.user = @user
+    @talent.user = current_user
     if @talent.save
-      redirect_to edit_talent_path(@talent)
+      redirect_to talent_path(@talent)
     else
-      render "talents/show", status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -56,6 +58,6 @@ class TalentsController < ApplicationController
   # end
 
   def talent_params
-    params.require(:talent).permit(:pseudo, :working_area, :talent_type, :price, :performance_duration, :medias, :description, :user_id)
+    params.require(:talent).permit(:pseudo, :working_area, :talent_type, :price, :performance_duration, :description, medias: [])
   end
 end
