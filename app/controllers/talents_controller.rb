@@ -39,7 +39,7 @@ class TalentsController < ApplicationController
   private
 
   def set_talent
-    @talent = Talent.find(params[:talent_id])
+    @talent = Talent.find(params[:id])
   end
 
   def talent_params
