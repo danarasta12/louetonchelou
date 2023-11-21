@@ -46,6 +46,6 @@ class TalentsController < ApplicationController
   end
 
   def talent_params
-    params.require(:talent).permit(:pseudo, :working_area, :talent_type, :price, :performance_duration, :medias, :description)
+    params.require(:talent).permit(:pseudo, :working_area, :talent_type, :price, :performance_duration, :description, medias: [])
   end
 end
