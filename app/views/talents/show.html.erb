@@ -1,3 +1,59 @@
+<div class="container">
+  <h2><%= @talent.pseudo %></h2>
+  <div class="talent-infos-recap">
+    <p><%= @talent.working_area %></p>
+    <p><%= @talent.talent_type %></p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="parent">
+    <div class="big-photo">
+    </div>
+    <div class="small-photo"></div>
+    <div class="small-photo"></div>
+    <div class="small-photo"></div>
+    <div class="small-photo"> </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="content">
+    <div class="left-info">
+      <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis architecto alias sit delectus ipsam perferendis odio soluta in, iure vero suscipit consectetur? Recusandae</p>
+    </div>
+    <div class="right-info">
+      <div class="card-book">
+        <h4><%= @talent.price %>€</h4>
+        <p> 5/5</p>
+        <div class="form-wrapper">
+          <h3>Book <%= @talent.pseudo %></h3>
+          <%= simple_form_for [@booking] do |f| %>
+            <%= f.input :start_date, as: :string,required:  false,input_html: { id: "range_start" } %>
+            <%= f.input :end_date, as: :string,required: false,input_html: { id: "range_end" } %>
+            <%= f.button :submit, "Book a freak", class: "btn btn-primary" %>
+          <% end %>
+          <div id="booking-form-div"
+            data-bookings="<%= @bookings_dates.to_json%>">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="book-button">
+  <% if user_signed_in? %>
+    <%= link_to "Book a freak", dashboard_path%>
+  <% else %>
+  <%= link_to "Book a freak", new_user_seesion_path%>
+  <% end  %>
+</div>
+
+<%# url(<%=list.photo.attached? ? cl_image_tag(list.photo.key) :asset_path('back_ground.jpg')%>
 <% @talent.medias.each do |photo| %>
   <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
 <% end %>
