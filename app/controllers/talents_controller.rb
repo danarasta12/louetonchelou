@@ -1,8 +1,17 @@
 class TalentsController < ApplicationController
   # skip_before_action :authenticate_user!, only: :home
-  before_action :set_talent, only: %i[show create edit update]
+  before_action :set_talent, only: %i[create edit update]
+  # :set_user
 
   def show
+    @talent = Talent.find(params[:id])
+    @bookings = @talent.bookings
+    @bookings_dates = @bookings.map do |booking|
+      {
+        from: booking.start_date,
+        to: booking.end_date
+      }
+    end
   end
 
   def index
@@ -41,6 +50,10 @@ class TalentsController < ApplicationController
   def set_talent
     @talent = Talent.find(params[:id])
   end
+
+  # def set_user
+  #   @user = User.find(params[:id])
+  # end
 
   def talent_params
     params.require(:talent).permit(:pseudo, :working_area, :talent_type, :price, :performance_duration, :medias, :description, :user_id)

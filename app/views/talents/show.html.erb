@@ -1,27 +1,57 @@
+
 <div class="container">
-  <h2><%= @talent.peseudo %></h2>
+  <h2><%= @talent.pseudo %></h2>
   <div class="talent-infos-recap">
     <p><%= @talent.working_area %></p>
     <p><%= @talent.talent_type %></p>
   </div>
 </div>
 
-<div class="parent">
-  <div class="div1">
-    <img src="https://images.unsplash.com/photo-1659669336385-a68e22cba1da?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
-  </div>
-  <div class="div2">
-    <img src="https://images.unsplash.com/photo-1470020618177-f49a96241ae7?q=80&w=2788&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
-   </div>
-  <div class="div3">
-    <img src="https://images.unsplash.com/photo-1630380777896-5f24789dc5fa?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
-  </div>
-  <div class="div4">
-    <img src="https://images.unsplash.com/photo-1517594422361-5eeb8ae275a9?q=80&w=2304&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
-  </div>
-  <div class="div5">
-   <img src="https://images.unsplash.com/photo-1546603999-24fbcb911bee?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+<div class="container">
+  <div class="parent">
+    <div class="big-photo">
+    </div>
+    <div class="small-photo"></div>
+    <div class="small-photo"></div>
+    <div class="small-photo"></div>
+    <div class="small-photo"> </div>
   </div>
 </div>
 
-<p>Find me in app/views/talents/show.html.erb</p>
+
+<div class="container">
+  <div class="content">
+    <div class="left-info">
+      <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis architecto alias sit delectus ipsam perferendis odio soluta in, iure vero suscipit consectetur? Recusandae</p>
+    </div>
+    <div class="right-info">
+      <div class="card-book">
+        <h4><%= @talent.price %>€</h4>
+        <p> 5/5</p>
+        <div class="form-wrapper">
+          <h3>Book <%= @talent.pseudo %></h3>
+          <%= simple_form_for [@booking] do |f| %>
+            <%= f.input :start_date, as: :string,required:  false,input_html: { id: "range_start" } %>
+            <%= f.input :end_date, as: :string,required: false,input_html: { id: "range_end" } %>
+            <%= f.button :submit, "Book a freak", class: "btn btn-primary" %>
+          <% end %>
+          <div id="booking-form-div"
+            data-bookings="<%= @bookings_dates.to_json%>">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="book-button">
+  <% if user_signed_in? %>
+    <%= link_to "Book a freak", dashboard_path%>
+  <% else %>
+  <%= link_to "Book a freak", new_user_seesion_path%>
+  <% end  %>
+</div>
+
+<%# url(<%=list.photo.attached? ? cl_image_tag(list.photo.key) :asset_path('back_ground.jpg')%>
