@@ -14,13 +14,13 @@ puts "Creating 20 users"
     password: Faker::Alphanumeric.alphanumeric(number: 10),
     sex: ["homme", "femme"].sample,
     date_of_birth: Date.new(rand(1980..2005), rand(1..12), rand(1..29)),
-    chelou?: ["true", "false"].sample
+    chelou?: [true, false].sample
   )
 
-  puts "Creating talent for #{user.id}"
-
-  next user.chelou?
+  if user.chelou?
+    puts "Creating talent for #{user.id}"
     Talent.create(
+      user: user,
       pseudo: Faker::Movies::HarryPotter.character,
       working_area: Faker::Address.state,
       talent_type: ["Cracheur de feu, Stripteaseuse, Dompteur de serpents, Jongleur fou", "Magicien"].sample,
@@ -29,6 +29,7 @@ puts "Creating 20 users"
       medias: "https://source.unsplash.com/random/?party",
       description: Faker::Movies::HarryPotter.quote
     )
+  end
 end
 
 puts "Done"
