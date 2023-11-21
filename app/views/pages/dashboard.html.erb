@@ -1,1 +1,53 @@
-yo
+<div class="container">
+  <ul class="list-inline tabs-underlined" id="myTab" role="tablist">
+    <li role="presentation">
+      <a href="#" class="tab-underlined active" id="booking-tab" data-bs-toggle="tab" data-bs-target="#booking" role="tab" aria-controls="booking" aria-selected="true">Bookings</a>
+    </li>
+    <li role="presentation">
+      <a href="#" class="tab-underlined" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+    </li>
+    <li role="presentation">
+      <a href="#" class="tab-underlined" id="talent-tab" data-bs-toggle="tab" data-bs-target="#talent" role="tab" aria-controls="talent" aria-selected="false">Talents</a>
+    </li>
+  </ul>
+
+  <div id="myTabContent">
+    <div class="tab-pane fade show active" id="booking" role="tabpanel" aria-labelledby="booking-tab">
+      <% @user.bookings.each do |booking| %>
+        <div class="card-booking">
+          <img src= "<%= booking.talent.medias %>"/>
+          <div class="card-booking-infos">
+            <h2><%= link_to booking.talent.pseudo, talent_path(booking.talent), class: "colored-link" %> - <%= link_to booking.talent.talent_type, talent_path(booking.talent), class: "colored-link" %></h2>
+            <p>Description: <%= booking.talent.description %></p>
+            <p>From <%= booking.start_date %> to <%= booking.end_date %> - <%= booking.address %></p>
+            <p>Price: <%= booking.talent.price %> €</p>
+            <%= link_to "Cancel your booking", booking_path(booking), class: 'light-link', data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to cancel this booking with #{booking.talent.pseudo}?" } %>
+          </div>
+        </div>
+      <% end %>
+      <%= link_to "Book another talent", root_path, class: "btn btn-flat" %>
+    </div>
+
+
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <h2>Your account <%= @user.first_name %></h2>
+      <%= link_to "Edit my profile", root_path, class: "btn btn-flat" %>
+      <div class="card-profile">
+        <%= @user.first_name %>
+        <%= @user.last_name %>
+        <%= @user.email %>
+        <%= @user.date_of_birth %>
+        <%= @user.sex %>
+        <%= @user.address %>
+        <%= @user.phone %>
+        <%= @user.description %>
+        <%= @user.sex %>
+      </div>
+    </div>
+
+
+    <div class="tab-pane fade" id="talent" role="tabpanel" aria-labelledby="talent-tab">
+    <h2>Your account <%= @user.first_name %></h2>
+    </div>
+  </div>
+</div>
