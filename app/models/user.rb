@@ -11,7 +11,7 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :password, presence: true
   validates :sex, presence: true
-  validates :validate_age
+  before_validation :validate_age
 
   private
 
