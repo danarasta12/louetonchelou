@@ -33,21 +33,20 @@
       <h2>Your account <%= @user.first_name %></h2>
       <%= link_to "Edit my profile", root_path, class: "btn btn-flat" %>
       <div class="card-profile">
-        <%= @user.first_name %>
-        <%= @user.last_name %>
-        <%= @user.email %>
-        <%= @user.date_of_birth %>
-        <%= @user.sex %>
-        <%= @user.address %>
-        <%= @user.phone %>
-        <%= @user.description %>
-        <%= @user.sex %>
+        <li><%= @user.first_name %></li>
+        <li><%= @user.last_name %></li>
+        <li><%= @user.email %></li>
+        <li><%= @user.date_of_birth %></li>
+        <li><%= @user.sex %></li>
+        <li><%= @user.address %></li>
+        <li><%= @user.phone %></li>
+        <li><%= @user.description %></li>
       </div>
     </div>
 
 
     <div class="tab-pane fade" id="talent" role="tabpanel" aria-labelledby="talent-tab">
-    <h2>Your account <%= @user.first_name %></h2>
+      <h2>Your account <%= @user.first_name %></h2>
     </div>
   </div>
 </div>
