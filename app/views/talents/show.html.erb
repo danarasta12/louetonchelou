@@ -21,7 +21,7 @@
 <div class="container">
   <div class="content">
     <div class="left-info">
-      <h3><%= @talent.pseudo %> - <%= @talent.working_area %></h3>
+      <h3><%= @talent.pseudo %> - <%= @talent.talent_type %></h3>
       <p><%= @talent.description %></p>
     </div>
     <div class="right-info">
@@ -53,11 +53,11 @@
   <% if user_signed_in? %>
     <%= link_to "Book a freak", dashboard_path%>
   <% else %>
-  <%= link_to "Book a freak", new_user_seesion_path%>
+  <%= link_to "Book a freak", new_user_session_path%>
   <% end  %>
 </div>
 
 <%# url(<%=list.photo.attached? ? cl_image_tag(list.photo.key) :asset_path('back_ground.jpg')%>
-<% @talent.medias.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
+<%# @talent.medias.each do |photo|
+cl_image_tag photo.key, height: 300, width: 400, crop: :fill
+end %>

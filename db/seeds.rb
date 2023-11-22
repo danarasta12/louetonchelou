@@ -1,15 +1,15 @@
 require "faker"
 require "date"
-require "cloudinary"
+require 'open-uri'
 
 puts "Destroy user"
+Talent.destroy_all
 User.destroy_all
-Booking.destroy_all
 
 puts "Creating 20 users"
 
 20.times do
-  user = User.create(
+  user = User.create!(
     email: Faker::Internet.email,
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -19,26 +19,32 @@ puts "Creating 20 users"
     chelou?: [true, false].sample
   )
 
+  puts "#{user.first_name} created"
+
   if user.chelou?
-    puts "Creating talent for #{user.id}"
-    Talent.create(
+    puts "Creating talent for #{user.first_name}"
+    talent = Talent.new(
       user: user,
       pseudo: Faker::Movies::HarryPotter.character,
       working_area: Faker::Address.state,
       talent_type: ["Cracheur de feu", "Stripteaseuse", "Dompteur de serpents", "Jongleur fou", "Magicien"].sample,
       price: rand(10..500).to_f,
       performance_duration: rand(10..120).to_s,
+      # medias: "https://source.unsplash.com/random/?party",
       description: Faker::Movies::HarryPotter.quote
     )
-    file = URI.open()
-    talent.medias.attach(io:)
+    file = URI.open('https://source.unsplash.com/random/?party')
+    talent.medias.attach(io: file, filename: "#{talent.pseudo}.png", content_type: 'image/png')
+
+    talent.save!
+    puts "#{talent.pseudo} created"
   end
 end
-Booking.create(
-  start_date: Date.new(2023, rand(1..12), rand(1..29)),
-  end_date: Date.new(2023, 12, 12),
-  address: '18 Villa Gaudelet, 75011 Paris'
-)
+# Booking.create(
+#   start_date: Date.new(2023, rand(1..12), rand(1..29)),
+#   end_date: Date.new(2023, 12, 12),
+#   address: '18 Villa Gaudelet, 75011 Paris'
+# )
 
 puts "1 booking created"
 puts "Done"
