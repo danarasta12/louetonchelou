@@ -1,84 +1,63 @@
-<%# <nav class="navbar navbar-expand-lg bg-body-tertiary">
-
-  <div class="container-fluid">
-
-    <a class="navbar-brand" href="#">
-      <i class="fa-solid fa-democrat"></i>
-    </a>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">LovelyFreaks</a>
-        </li>
-      </ul>
-
-      <form class="d-flex" style="margin-right: auto;" role="search">
-        <input class="form-control me-2" type="search" placeholder="WHO? WHAT?" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
-      </form>
-
-      <ul class="navbar-nav mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Wanna become a freak?</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fa-solid fa-bars"></i>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Dashboard</a></li>
-            <li><a class="dropdown-item" href="#">Edit Profil</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Log Out</a></li>
-          </ul>
-        </li>
-      </ul>
-
-    </div>
-
-  </div>
-
-</nav> %>
-
-
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
+
     <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+      <i class="fa-solid fa-democrat" id="democrat" style="font-size: 40px"></i>
     <% end %>
+
+    <ul class="nav-item dropdown">
+      <form class="form-inline">
+        <div class="input-group">
+          <button class="btn btn-outline-secondary dropdown-toggle rounded-0" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Select your freak
+          </button>
+          <div class="dropdown-menu rounded-0">
+            <li><a class="dropdown-item" href="#">Magicien</a></li>
+            <li><a class="dropdown-item" href="#">Cracheur de Feu</a></li>
+            <li><a class="dropdown-item" href="#">Dompteur de Serpents</a></li>
+            <li><a class="dropdown-item" href="#">Streapteaseur</a></li>
+            <li><a class="dropdown-item" href="#">Clown</a></li>
+          </div>
+        </div>
+      </form>
+    </ul>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
+
+      <ul class="navbar-nav d-flex">
+
         <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to "Wanna become a freak?", new_talent_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item dropdown">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Dashboard", dashboard_path, class: "dropdown-item" %>
-              <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
-            </div>
-          </li>
+
+          <div>
+            <li class="nav-item" id="freak">
+              <%= link_to "Wanna become a freak?", new_talent_path, class: "nav-link" %>
+            </li>
+          </div>
+
+          <div>
+            <li class="nav-item dropdown">
+              <i class="fa-solid fa-user avatar dropdown-toggle" style="font-size: 30px" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <%= link_to "Dashboard", dashboard_path, class: "dropdown-item" %>
+                <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>
+                <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
+              </div>
+            </li>
+          </div>
+
         <% else %>
-          <!--li class="nav-item"-->
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          <!--/li-->
+          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+
         <% end %>
+
       </ul>
+
     </div>
+
   </div>
 </div>

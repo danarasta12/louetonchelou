@@ -1,7 +1,7 @@
 <%= simple_form_for @talent do |f| %>
   <%= f.input :pseudo %>
   <%= f.input :working_area, collection: ["Paris (75)", "Hauts-de-Seine (92)", "Seine-Saint-Denis (93)", "Val-de-Marne (94)", "Seine-et-Marne (77)", "Yvelines (78)", "Essonne (91)", "Val-d'Oise (95)"], include_blank: "Select Working Area" %>
-  <%= f.input :talent_type %>
+  <%= f.input :talent_type, as: :select, collection: ['Magicien', 'Cracheur de Feu', 'Dompteur de Serpent', 'Streapteaseur', 'Clown'], include_blank: "Select Talent type" %>
   <%= f.input :price %>
   <%= f.input :performance_duration %>
   <%= f.input :medias, as: :file, input_html: { multiple: true } %>
