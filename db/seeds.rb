@@ -1,8 +1,10 @@
 require "faker"
 require "date"
+require "cloudinary"
 
 puts "Destroy user"
 User.destroy_all
+Booking.destroy_all
 
 puts "Creating 20 users"
 
@@ -26,10 +28,17 @@ puts "Creating 20 users"
       talent_type: ["Cracheur de feu", "Stripteaseuse", "Dompteur de serpents", "Jongleur fou", "Magicien"].sample,
       price: rand(10..500).to_f,
       performance_duration: rand(10..120).to_s,
-      medias: "https://source.unsplash.com/random/?party",
       description: Faker::Movies::HarryPotter.quote
     )
+    file = URI.open()
+    talent.medias.attach(io:)
   end
 end
+Booking.create(
+  start_date: Date.new(2023, rand(1..12), rand(1..29)),
+  end_date: Date.new(2023, 12, 12),
+  address: '18 Villa Gaudelet, 75011 Paris'
+)
 
+puts "1 booking created"
 puts "Done"
