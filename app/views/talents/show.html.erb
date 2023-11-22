@@ -23,6 +23,10 @@
     <div class="left-info">
       <h3><%= @talent.pseudo %> - <%= @talent.talent_type %></h3>
       <p><%= @talent.description %></p>
+      <div class="reviews">
+        <p><%= @talent.review.comment %></p>
+        <p><%= @talent.review.rating %></p>
+      </div>
     </div>
     <div class="right-info">
       <div class="card-book">
