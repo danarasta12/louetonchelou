@@ -1,7 +1,7 @@
 .card-profile {
   display: flex;
   flex-direction: column;
-  margin-top: 15px;
+  margin: 20px 0;
 }
 
 .card-data {
@@ -13,5 +13,5 @@
 .card-data p {
   color: #bcb8b8;
   font-family: "Nunito", "Helvetica", "sans-serif";
-  margin-bottom: 0px;
+  margin: 2px 0 0 5px;
 }
