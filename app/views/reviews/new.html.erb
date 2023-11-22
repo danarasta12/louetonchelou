@@ -1,0 +1,7 @@
+<h1>Write a Review</h1>
+
+<%= simple_form_for [@booking, @review] do |f| %>
+  <%= f.input :comment, placeholder: "Add your review here..." %>
+  <%= f.input :rating, as: :select, collection: (1..5), required: true, label: false %>
+  <%= f.submit class: "btn" %>
+<% end %>

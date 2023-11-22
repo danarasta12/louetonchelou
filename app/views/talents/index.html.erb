@@ -14,7 +14,11 @@
       <div class="col-md-3 talent-card">
         <a href="<%= talent_path(talent) %>" class="card-link" style="text-decoration: none">
           <div class="card">
-            <img src="<%= talent.medias %>" class="card-img-top" alt="Talent picture">
+            <% if talent.medias.attached?  %>
+              <img src="<%= cl_image_path(talent.medias.first.key)%>" class="card-img-top" alt="Talent picture">
+            <% else %>
+              <img src="<%= asset_path('magicien.jpg')%>" class="card-img-top" alt="Talent picture">
+            <% end %>
             <div class="card-body">
               <h5 class="card-title"><%= talent.pseudo %></h5>
               <p class="card-text"><%= talent.talent_type %></p>

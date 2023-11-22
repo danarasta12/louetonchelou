@@ -8,8 +8,12 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
   resources :talents do
     resources :bookings, only: %i[new create]
-    resources :reviews, only: %i[create]
   end
+
+  resources :booking, only: [] do
+    resources :reviews, only: %i[new create]
+  end
+
   resources :bookings, only: %i[destroy]
   get "dashboard", to: "pages#dashboard"
 end
