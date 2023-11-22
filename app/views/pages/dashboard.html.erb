@@ -33,14 +33,34 @@
       <h2>Your account <%= @user.first_name %></h2>
       <%= link_to "Edit my profile", root_path, class: "btn btn-flat" %>
       <div class="card-profile">
-        <li><%= @user.first_name %></li>
-        <li><%= @user.last_name %></li>
-        <li><%= @user.email %></li>
-        <li><%= @user.date_of_birth %></li>
-        <li><%= @user.sex %></li>
-        <li><%= @user.address %></li>
-        <li><%= @user.phone %></li>
-        <li><%= @user.description %></li>
+        <div class="card-data">
+          <h5>Name</h5>
+          <p><%= @user.first_name %> <%= @user.last_name %></p>
+        </div>
+        <div class="card-data">
+          <h5>Email</h5>
+           <p><%= @user.email %></p>
+        </div>
+        <div class="card-data">
+          <h5>Date of Birth</h5>
+          <p><%= @user.date_of_birth %></p>
+        </div>
+        <div class="card-data">
+          <h5>Sex</h5>
+          <p><%= @user.sex %></p>
+        </div>
+        <div class="card-data">
+          <h5>Address</h5>
+          <p><%= @user.address %></p>
+        </div>
+        <div class="card-data">
+          <h5>Phone</h5>
+          <p><%= @user.phone %></p>
+        </div>
+        <div class="card-data">
+          <h5>Description</h5>
+          <p><%= @user.description %></p>
+        </div>
       </div>
     </div>
 

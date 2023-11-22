@@ -1,9 +1,10 @@
 class TalentsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
-  before_action :set_talent, only: %i[create show edit update]
-
+  before_action :set_talent, only: %i[create edit update]
+  # :set_user
   def show
     @talent = Talent.find(params[:id])
+    @booking = Booking.new
     @bookings = @talent.bookings
     @bookings_dates = @bookings.map do |booking|
       {
