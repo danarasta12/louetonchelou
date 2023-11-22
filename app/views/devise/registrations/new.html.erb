@@ -30,9 +30,11 @@
                 autofocus: true,
                 input_html: { autocomplete: "date_of_birth" }%>
     <%= f.input :sex,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "sex" }%>
+            required: true,
+            autofocus: true,
+            input_html: { autocomplete: "sex" },
+            as: :select,
+            collection: [['Homme', 'homme'], ['Femme', 'femme'], ['Autre', 'autre']] %>
   </div>
 
   <div class="form-actions">
