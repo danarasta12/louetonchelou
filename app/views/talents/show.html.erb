@@ -23,11 +23,25 @@
     <div class="left-info">
       <h3><%= @talent.pseudo %> - <%= @talent.talent_type %></h3>
       <p><%= @talent.description %></p>
+      <div class="reviews">
+         <% @talent.reviews.each do |review| %>
+          <div class="comment">
+            <p><%= review.comment %></p>
+            <p><%= review.rating %><i class="fa-solid fa-star"></i></p>
+          </div>
+        <% end %>
+      </div>
     </div>
     <div class="right-info">
       <div class="card-book">
         <h4><%= @talent.price %>€</h4>
-        <p> 5/5</p>
+       <% if @talent.reviews.any? %>
+        <% total_ratings = @talent.reviews.pluck(:rating).compact.sum %>
+        <% average_rating = total_ratings.to_f / @talent.reviews.count %>
+        <p> <%= average_rating.round(2) %><i class="fa-solid fa-star"></i></p>
+      <% else %>
+        <p> No ratings yet </p>
+      <% end %>
         <div class="form-wrapper">
           <h3>Book <%= @talent.pseudo %></h3>
           <%= simple_form_for [@talent, @booking] do |f| %>
