@@ -31,31 +31,24 @@
         <div class="form-wrapper">
           <h3>Book <%= @talent.pseudo %></h3>
           <%= simple_form_for [@talent, @booking] do |f| %>
-            <%= f.input :start_date, as: :string,
+            <%= f.input :start_date, as: :string, class: "start_date",
                         required:  false,
                         input_html: { data: { controller: "datepicker" } } %>
-            <%= f.input :end_date, as: :string,
+            <%= f.input :end_date, as: :string, class: "end_date",
                         required: false,
                         input_html: { data: { controller: "datepicker" } } %>
-            <%= f.button :submit, "Book a freak", class: "btn btn-primary" %>
+            <% if user_signed_in? %>
+              <%= link_to "Book a freak", dashboard_path, class: "btn btn-primary" %>
+            <% else %>
+              <%= link_to "Book a freak", new_user_session_path, class: "btn btn-primary" %>
+            <% end  %>
           <% end %>
-          <div id="booking-form-div"
-            data-bookings="<%= @bookings_dates.to_json%>">
-          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-
-<div class="book-button">
-  <% if user_signed_in? %>
-    <%= link_to "Book a freak", dashboard_path%>
-  <% else %>
-  <%= link_to "Book a freak", new_user_session_path%>
-  <% end  %>
-</div>
 
 <%# url(<%=list.photo.attached? ? cl_image_tag(list.photo.key) :asset_path('back_ground.jpg')%>
 <%# @talent.medias.each do |photo|
