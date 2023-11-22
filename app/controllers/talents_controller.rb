@@ -1,6 +1,6 @@
 class TalentsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
-  before_action :set_talent, only: %i[create show edit update]
+  before_action :set_talent, only: %i[show edit update]
 
   def show
     @talent = Talent.find(params[:id])
