@@ -37,11 +37,7 @@
             <%= f.input :end_date, as: :string, class: "end_date",
                         required: false,
                         input_html: { data: { controller: "datepicker" } } %>
-            <% if user_signed_in? %>
-              <%= link_to "Book a freak", dashboard_path, class: "btn btn-primary" %>
-            <% else %>
-              <%= link_to "Book a freak", new_user_session_path, class: "btn btn-primary" %>
-            <% end  %>
+            <%= f.submit class: "btn" %>
           <% end %>
         </div>
       </div>
