@@ -8,8 +8,4 @@ window.Stimulus   = application
 
 export { application }
 
-import { initFlatpickr } from '../plugins/flatpickr';
 
-document.addEventListener('turbolinks:load', () => {
-  initFlatpickr();
-})

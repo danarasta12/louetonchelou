@@ -4,6 +4,7 @@ class TalentsController < ApplicationController
 
   def show
     @talent = Talent.find(params[:id])
+    @booking = Booking.new
     @bookings = @talent.bookings
     @bookings_dates = @bookings.map do |booking|
       {
