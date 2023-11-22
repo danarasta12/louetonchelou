@@ -16,7 +16,7 @@
       <% if @user.bookings.count > 1 %>
         <h2>Your bookings <%= @user.first_name %></h2>
       <% else %>
-        <h2>Your bookings <%= @user.first_name %></h2>
+        <h2>Your booking <%= @user.first_name %></h2>
       <% end %>
       <% @user.bookings.each do |booking| %>
         <div class="card-booking">
@@ -111,4 +111,3 @@
     </div>
   </div>
 </div>
-
