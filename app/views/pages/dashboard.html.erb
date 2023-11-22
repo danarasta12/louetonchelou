@@ -26,10 +26,10 @@
             <p>Description: <%= booking.talent.description %></p>
             <p>From <%= booking.start_date %> to <%= booking.end_date %> - <%= booking.address %></p>
             <p>Price: <%= booking.talent.price %> €</p>
+            <%= link_to "Write a Review", new_booking_review_path(booking), class: 'light-link' %> <span class='light-link'>|</span>
             <%= link_to "Cancel your booking", booking_path(booking), class: 'light-link', data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to cancel this booking with #{booking.talent.pseudo}?" } %>
           </div>
         </div>
-        <%= link_to "Write a Review", new_booking_review_path(booking) %>
       <% end %>
       <%= link_to "Book another talent", root_path, class: "btn btn-flat" %>
     </div>

@@ -44,7 +44,7 @@ class TalentsController < ApplicationController
 
   def destroy
     @talent.destroy
-    redirect_to talents_path, status: :see_other
+    redirect_to dashboard_path, status: :see_other
   end
 
   private
