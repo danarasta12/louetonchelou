@@ -31,7 +31,8 @@
 
 .content {
   display: flex;
-  margin-top: 20px; /* Adjust margin as needed */
+  margin-top: 20px;
+  margin-bottom: 15px; /* Adjust margin as needed */
 }
 
 .left-info {
@@ -65,6 +66,18 @@
   &:hover{
     background-color: $light-orange;
   }
+}
+
+
+.comment{
+  display: flex;
+  p{
+    margin-right: 20px;
+  }
+}
+
+.comment i{
+  margin-left: 5px;
 }
 
 h3{
