@@ -1,15 +1,18 @@
-<h1>Talents#index</h1>
-<p>Find me in app/views/talents/index.html.erb</p>
-
-<section class="search-filters">
-  <!-- Ajoutez vos filtres de recherche ici si nécessaire -->
-</section>
+<%# <section class="search-filters">
+  <div class="talent-filters d-flex justify-content-center align-items-center">
+    <i class="fa-solid fa-wand-magic-sparkles fa-2x icon"></i>
+    <i class="fa-solid fa-fire fa-2x icon"></i>
+    <i class="fa-solid fa-venus fa-2x icon"></i>
+    <i class="fa-solid fa-face-grin-squint-tears fa-2x icon"></i>
+    <i class="fa-solid fa-staff-snake fa-2x icon"></i>
+  </div>
+</section> %>
 
 <section class="talent-list">
   <div class="row">
     <% @talents.each do |talent| %>
       <div class="col-md-3 talent-card">
-        <a href="<%= talent_path(talent) %>" class="card-link">
+        <a href="<%= talent_path(talent) %>" class="card-link" style="text-decoration: none">
           <div class="card">
             <% if talent.medias.attached?  %>
               <img src="<%= cl_image_path(talent.medias.first.key)%>" class="card-img-top" alt="Talent picture">
@@ -18,8 +21,7 @@
             <% end %>
             <div class="card-body">
               <h5 class="card-title"><%= talent.pseudo %></h5>
-              <p class="card-text">Type: <%= talent.talent_type %></p>
-              <p class="card-text">Working Area: <%= talent.working_area %></p>
+              <p class="card-text"><%= talent.talent_type %></p>
             </div>
           </div>
         </a>
