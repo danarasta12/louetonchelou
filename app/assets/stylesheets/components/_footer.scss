@@ -1,16 +1,8 @@
 $footer-height: 10vh;
 
-.footer-content {
+footer {
   position: fixed;
   bottom: 0;
-  width: 100%;
-  background-color: $medium-red;
-  padding: 10px;
-  height: $footer-height;
-}
-
-body {
-  padding-bottom: $footer-height;
 }
 
 .left-content {
