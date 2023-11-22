@@ -1,7 +1,7 @@
 class TalentsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
-  before_action :set_talent, only: %i[create edit update]
-  # :set_user
+  before_action :set_talent, only: %i[create edit update destroy]
+  
   def show
     @talent = Talent.find(params[:id])
     @booking = Booking.new
