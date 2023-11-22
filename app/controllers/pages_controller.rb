@@ -6,5 +6,7 @@ class PagesController < ApplicationController
 
   def dashboard
     @user = current_user
+    @booked_talent = @user.bookings.includes(:talent).map(&:talent)
+    raise
   end
 end
