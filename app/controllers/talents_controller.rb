@@ -1,5 +1,5 @@
 class TalentsController < ApplicationController
-  # skip_before_action :authenticate_user!, only: :home
+  skip_before_action :authenticate_user!, only: %i[index show]
   before_action :set_talent, only: %i[create show edit update]
 
   def show

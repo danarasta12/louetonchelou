@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_21_120137) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_22_104314) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -71,7 +71,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_21_120137) do
     t.string "talent_type"
     t.float "price"
     t.string "performance_duration"
-    t.string "medias"
     t.text "description"
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_talents_on_user_id"
