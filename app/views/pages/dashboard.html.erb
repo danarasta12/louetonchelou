@@ -6,9 +6,12 @@
     <li role="presentation">
       <a href="#" class="tab-underlined" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
     </li>
+    <% if @user.talents.any? %>
     <li role="presentation">
       <a href="#" class="tab-underlined" id="talent-tab" data-bs-toggle="tab" data-bs-target="#talent" role="tab" aria-controls="talent" aria-selected="false">Talents</a>
     </li>
+    <% else %>
+    <% end %>
   </ul>
 
   <div class="tab-content" id="myTabContent">
@@ -30,16 +33,16 @@
             <p>Description: <%= booking.talent.description %></p>
             <p>From <%= booking.start_date %> to <%= booking.end_date %> - <%= booking.address %></p>
             <p>Price: <%= number_with_precision(booking.talent.price, precision: 2) %> €</p>
-            <%= link_to "Write a Review", new_booking_review_path(booking), class: 'light-link', 'data-bs-toggle' => 'modal', 'data-bs-target' => '#review_popup' %> <span class='light-link'>|</span>
-            <%= link_to "Cancel your booking", booking_path(booking), class: 'light-link', data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to cancel this booking with #{booking.talent.pseudo}?" } %>
+            <i class="fa-solid fa-pen-nib"></i><%= link_to "Write a Review", new_booking_review_path(booking), class: 'light-link', 'data-bs-toggle' => 'modal', 'data-bs-target' => "#review_popup#{booking.talent.id}" %> <span class='light-link'>|</span>
+            <i class="fa-regular fa-circle-xmark"></i><%= link_to "Cancel your booking", booking_path(booking), class: 'light-link', data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to cancel this booking with #{booking.talent.pseudo}?" } %>
           </div>
         </div>
         <!-- Modal -->
-        <div class="modal fade" id="review_popup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="review_popup<%= booking.talent.id %>" tabindex="-1" aria-labelledby="review_popup<%= booking.talent.id %>Label" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Write a Review for your booking with <%= booking.talent.pseudo %> </h5>
+                <h5 class="modal-title" id="review_popup<%= booking.talent.id %>Label">Write a Review for your booking with <%= booking.talent.pseudo %> </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
@@ -56,43 +59,76 @@
         </div>
       <% end %>
       <%= link_to "Book another talent", root_path, class: "btn btn-flat" %>
+      <% if @user.talents.any? %>
+      <% else %>
+        <%= link_to "Wanna become a chelou?", new_talent_path, class: "btn btn-flat" %>
+      <% end %>
     </div>
 
 
 
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-      <h2>Your account <%= @user.first_name %></h2>
-      <div class="card-profile">
-        <div class="card-data">
-          <h5>Name</h5>
-          <p><%= @user.first_name %> <%= @user.last_name %></p>
+      <div class="row">
+        <div class="left-container">
+          <div class="inter-left">
+            <div class="white-block">
+              <div class="left-side">
+                <img class="avatar" src="<%= current_user && current_user.profile_picture.attached? ? cl_image_path(current_user.profile_picture.key) :asset_path('mimi.jpeg') %>" alt="">
+                <h4><%= current_user.first_name %></h4>
+              </div>
+              <div class="right-side">
+                <p class="number"><%= @user.bookings.count %></p>
+                <% if @user.bookings.count > 1 %>
+                  <p>bookings</p>
+                <% else %>
+                  <p>booking</p>
+                <% end %>
+                <hr>
+                <p class="number"><%= @user.talents.count %></p>
+                <% if @user.talents.count > 1 %>
+                  <p>talents</p>
+                <% else %>
+                  <p>talent</p>
+                <% end %>
+              </div>
+            </div>
+            <%= link_to "Edit my profile", edit_user_registration_path, class: "btn btn-flat" %>
+          </div>
         </div>
-        <div class="card-data">
-          <h5>Email</h5>
-           <p><%= @user.email %></p>
-        </div>
-        <div class="card-data">
-          <h5>Date of Birth</h5>
-          <p><%= @user.date_of_birth %></p>
-        </div>
-        <div class="card-data">
-          <h5>Sex</h5>
-          <p><%= @user.sex %></p>
-        </div>
-        <div class="card-data">
-          <h5>Address</h5>
-          <p><%= @user.address %></p>
-        </div>
-        <div class="card-data">
-          <h5>Phone</h5>
-          <p><%= @user.phone %></p>
-        </div>
-        <div class="card-data">
-          <h5>Description</h5>
-          <p><%= @user.description %></p>
+        <div class="right-container">
+          <h2>Your account</h2>
+          <div class="card-profile">
+            <div class="card-data">
+              <h5>Name</h5>
+              <p><%= @user.first_name %> <%= @user.last_name %></p>
+            </div>
+            <div class="card-data">
+              <h5>Email</h5>
+              <p><%= @user.email %></p>
+            </div>
+            <div class="card-data">
+              <h5>Date of Birth</h5>
+              <p><%= @user.date_of_birth %></p>
+            </div>
+            <div class="card-data">
+              <h5>Sex</h5>
+              <p><%= @user.sex %></p>
+            </div>
+            <div class="card-data">
+              <h5>Address</h5>
+              <p><%= @user.address %></p>
+            </div>
+            <div class="card-data">
+              <h5>Phone</h5>
+              <p><%= @user.phone %></p>
+            </div>
+            <div class="card-data">
+              <h5>Description</h5>
+              <p><%= @user.description %></p>
+            </div>
+          </div>
         </div>
       </div>
-      <%= link_to "Edit my profile", edit_user_registration_path, class: "btn btn-flat" %>
     </div>
 
 
@@ -114,8 +150,8 @@
             <p>Description: <%= talent.description %></p>
             <p>Performance duration: <%= talent.performance_duration %></p>
             <p>Price: <%= talent.price %> €</p>
-            <%= link_to "Edit your talent", edit_talent_path(talent), class: 'light-link' %> <span class='light-link'>|</span>
-            <%= link_to "Remove your talent", talent_path(talent), class: 'light-link', data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this talent?" } %>
+            <i class="fa-solid fa-wand-magic-sparkles"></i><%= link_to "Edit your talent", edit_talent_path(talent), class: 'light-link' %> <span class='light-link'>|</span>
+            <i class="fa-regular fa-circle-xmark"></i><%= link_to "Remove your talent", talent_path(talent), class: 'light-link', data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this talent?" } %>
           </div>
         </div>
       <% end %>
@@ -128,13 +164,22 @@
               <p>Performance: <%= link_to booking.talent.talent_type, talent_path(booking.talent), class: "colored-link" %></p>
               <p>Customer contact: <%= booking.user.first_name %> <%= booking.user.last_name %> | <%= booking.user.phone %></p>
               <p>Price: <%= booking.talent.price %> €</p>
-              <%= link_to "Cancel your booking", booking_path(booking), class: 'light-link', data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to cancel this booking with #{booking.user.first_name}?" } %>
+              <i class="fa-regular fa-circle-xmark"></i><%= link_to "Cancel your booking", booking_path(booking), class: 'light-link', data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to cancel this booking with #{booking.user.first_name}?" } %>
             </div>
           </div>
         <% end %>
       <% end %>
       <h2>Your reviews</h2>
-      <p>You don't have any review yet. Come back later!</p>
+      <% @talents.each do |talent| %>
+        <% talent.bookings.each do |booking| %>
+          <% booking.reviews.each do |review| %>
+            <div class="card-review">
+              <i class="fa-solid fa-star"></i><p><%= review.rating %>/5 "<%= review.comment %>"</p>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+      <%# <p>You don't have any review yet. Come back later!</p> %>
     </div>
   </div>
 </div>
