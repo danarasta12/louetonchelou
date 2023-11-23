@@ -27,7 +27,7 @@ puts "Creating 20 users"
       user: user,
       pseudo: Faker::Movies::HarryPotter.character,
       working_area: Faker::Address.state,
-      talent_type: ["Cracheur de feu", "Stripteaseuse", "Dompteur de serpents", "Jongleur fou", "Magicien"].sample,
+      talent_type: ["Cracheur de Feu", "Stripteaseur", "Dompteur de Serpents", "Clown", "Magicien"].sample,
       price: rand(10..500).to_f,
       performance_duration: rand(10..120).to_s,
       # medias: "https://source.unsplash.com/random/?party",

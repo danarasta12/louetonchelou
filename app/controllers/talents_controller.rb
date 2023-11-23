@@ -1,9 +1,8 @@
 class TalentsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
-  before_action :set_talent, only: %i[show edit update]
+  before_action :set_talent, only: %i[show edit update destroy]
 
   def show
-    @talent = Talent.find(params[:id])
     @booking = Booking.new
     @bookings = @talent.bookings
     @bookings_dates = @bookings.map do |booking|
@@ -45,7 +44,7 @@ class TalentsController < ApplicationController
 
   def destroy
     @talent.destroy
-    redirect_to talents_path, status: :see_other
+    redirect_to dashboard_path, status: :see_other
   end
 
   private
@@ -53,10 +52,6 @@ class TalentsController < ApplicationController
   def set_talent
     @talent = Talent.find(params[:id])
   end
-
-  # def set_user
-  #   @user = User.find(params[:id])
-  # end
 
   def talent_params
     params.require(:talent).permit(:pseudo, :working_area, :talent_type, :price, :performance_duration, :description, medias: [])

@@ -1,16 +1,14 @@
-.footer-content {
+$footer-height: 10vh;
+
+footer {
   position: fixed;
   bottom: 0;
-  width: 100%;
-  background-color: $medium-red;
-  padding: 10px;
 }
 
 .left-content {
   display: flex;
   align-items: center;
 }
-
 
 .right-content a {
   margin-left: 10px;

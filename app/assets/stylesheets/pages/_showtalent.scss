@@ -31,7 +31,8 @@
 
 .content {
   display: flex;
-  margin-top: 20px; /* Adjust margin as needed */
+  margin-top: 20px;
+  margin-bottom: 15px; /* Adjust margin as needed */
 }
 
 .left-info {
@@ -53,12 +54,30 @@
   border: 1px solid #8b8484 ;
 }
 
-.book-button a{
+.card-book .btn{
   padding: 5px 20px;
   background-color: $orange;
   text-decoration: none;
   color: #f5f5f5;
   border-radius: 5px;
+  width: 100%;
+  transition: 0.3s ease-in-out;
+
+  &:hover{
+    background-color: $light-orange;
+  }
+}
+
+
+.comment{
+  display: flex;
+  p{
+    margin-right: 20px;
+  }
+}
+
+.comment i{
+  margin-left: 5px;
 }
 
 h3{
