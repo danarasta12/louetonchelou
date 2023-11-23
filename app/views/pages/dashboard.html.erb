@@ -32,7 +32,7 @@
             <h2><%= link_to booking.talent.pseudo.capitalize, talent_path(booking.talent), class: "colored-link" %> - <%= link_to booking.talent.talent_type.capitalize, talent_path(booking.talent), class: "colored-link" %></h2>
             <p>Description: <%= booking.talent.description %></p>
             <p>From <%= booking.start_date %> to <%= booking.end_date %> - <%= booking.address %></p>
-            <p>Price: <%= booking.talent.price %> €</p>
+            <p>Price: <%= number_with_precision(booking.talent.price, precision: 2) %> €</p>
             <i class="fa-solid fa-pen-nib"></i><%= link_to "Write a Review", new_booking_review_path(booking), class: 'light-link', 'data-bs-toggle' => 'modal', 'data-bs-target' => "#review_popup#{booking.talent.id}" %> <span class='light-link'>|</span>
             <i class="fa-regular fa-circle-xmark"></i><%= link_to "Cancel your booking", booking_path(booking), class: 'light-link', data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to cancel this booking with #{booking.talent.pseudo}?" } %>
           </div>
