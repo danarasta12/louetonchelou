@@ -20,19 +20,44 @@
       <% end %>
       <% @user.bookings.each do |booking| %>
         <div class="card-booking">
-          <img src= "<%= booking.talent.medias %>"/>
+          <% if booking.talent.medias.attached?  %>
+            <img src="<%= cl_image_path(booking.talent.medias.first.key)%>" class="card-img-top" alt="Talent picture">
+          <% else %>
+            <img src="<%= asset_path('magicien.jpg')%>" class="card-img-top" alt="Talent picture">
+          <% end %>
           <div class="card-booking-infos">
             <h2><%= link_to booking.talent.pseudo.capitalize, talent_path(booking.talent), class: "colored-link" %> - <%= link_to booking.talent.talent_type.capitalize, talent_path(booking.talent), class: "colored-link" %></h2>
             <p>Description: <%= booking.talent.description %></p>
             <p>From <%= booking.start_date %> to <%= booking.end_date %> - <%= booking.address %></p>
             <p>Price: <%= booking.talent.price %> €</p>
-            <%= link_to "Write a Review", new_booking_review_path(booking), class: 'light-link' %> <span class='light-link'>|</span>
+            <%= link_to "Write a Review", new_booking_review_path(booking), class: 'light-link', 'data-bs-toggle' => 'modal', 'data-bs-target' => '#review_popup' %> <span class='light-link'>|</span>
             <%= link_to "Cancel your booking", booking_path(booking), class: 'light-link', data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to cancel this booking with #{booking.talent.pseudo}?" } %>
+          </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="review_popup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Write a Review for your booking with <%= booking.talent.pseudo %> </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <%= simple_form_for [booking, @review] do |f| %>
+                  <%= f.input :comment, placeholder: "Add your review here..." %>
+                  <%= f.input :rating, as: :select, collection: (1..5), required: true %>
+              </div>
+              <div class="modal-footer">
+                <%= f.submit class: "btn btn-flat" %>
+                <% end %>
+              </div>
+            </div>
           </div>
         </div>
       <% end %>
       <%= link_to "Book another talent", root_path, class: "btn btn-flat" %>
     </div>
+
 
 
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
@@ -79,7 +104,11 @@
       <% end %>
       <% @user.talents.each do |talent| %>
         <div class="card-booking">
-          <img src= "<%= talent.medias %>"/>
+          <% if talent.medias.attached?  %>
+            <img src="<%= cl_image_path(talent.medias.first.key)%>" class="card-img-top" alt="Talent picture">
+          <% else %>
+            <img src="<%= asset_path('magicien.jpg')%>" class="card-img-top" alt="Talent picture">
+          <% end %>
           <div class="card-booking-infos">
             <h2><%= link_to talent.talent_type.capitalize, talent_path(talent), class: "colored-link" %> - <%= link_to talent.working_area, talent_path(talent), class: "colored-link" %></h2>
             <p>Description: <%= talent.description %></p>
@@ -104,9 +133,6 @@
           </div>
         <% end %>
       <% end %>
-
-
-
       <h2>Your reviews</h2>
       <p>You don't have any review yet. Come back later!</p>
     </div>
