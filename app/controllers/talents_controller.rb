@@ -11,6 +11,7 @@ class TalentsController < ApplicationController
         to: booking.end_date
       }
     end
+    @user = @talent.user
   end
 
   def new
