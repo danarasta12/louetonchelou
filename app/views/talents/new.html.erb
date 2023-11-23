@@ -1,9 +1,8 @@
 <div class="registration-form-container">
-  <h1>Become a Freak</h1>
+  <h2>Become a Chelou</h2>
 
   <%= simple_form_for @talent do |f| %>
     <div class="form-group">
-      <%= f.label :pseudo, "Pseudo" %>
       <%= f.input :pseudo, class: "form-control" %>
     </div>
 
@@ -18,12 +17,10 @@
     </div>
 
     <div class="form-group">
-      <%= f.label :price, "Price" %>
       <%= f.input :price, class: "form-control" %>
     </div>
 
     <div class="form-group">
-      <%= f.label :performance_duration, "Performance Duration" %>
       <%= f.input :performance_duration, class: "form-control" %>
     </div>
 
