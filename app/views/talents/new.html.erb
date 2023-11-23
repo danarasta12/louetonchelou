@@ -1,10 +1,42 @@
-<%= simple_form_for @talent do |f| %>
-  <%= f.input :pseudo %>
-  <%= f.input :working_area, collection: ["75", "77", "78", "91", "92", "93", "94", "95"], include_blank: "Select Working Area" %>
-  <%= f.input :talent_type, as: :select, collection: ['Magicien', 'Cracheur de Feu', 'Dompteur de Serpent', 'Stripteaseur', 'Clown'], include_blank: "Select Talent type" %>
-  <%= f.input :price %>
-  <%= f.input :performance_duration %>
-  <%= f.input :medias, as: :file, input_html: { multiple: true } %>
-  <%= f.input :description, as: :text %>
-  <%= f.submit %>
-<% end %>
+<div class="registration-form-container">
+  <h1>Become a Freak</h1>
+
+  <%= simple_form_for @talent do |f| %>
+    <div class="form-group">
+      <%= f.label :pseudo, "Pseudo" %>
+      <%= f.input :pseudo, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :working_area, "Working Area" %>
+      <%= f.select :working_area, collection: ["75", "77", "78", "91", "92", "93", "94", "95"], include_blank: "Select Working Area", class: "form-select" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :talent_type, "Talent Type" %>
+      <%= f.select :talent_type, collection: ['Magicien', 'Cracheur de Feu', 'Dompteur de Serpent', 'Stripteaseur', 'Clown'], include_blank: "Select Talent type", class: "form-select" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :price, "Price" %>
+      <%= f.input :price, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :performance_duration, "Performance Duration" %>
+      <%= f.input :performance_duration, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :medias, "Medias" %>
+      <%= f.file_field :medias, multiple: true, class: "form-control-file" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :description, "Description" %>
+      <%= f.text_area :description, class: "form-control" %>
+    </div>
+
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  <% end %>
+</div>
