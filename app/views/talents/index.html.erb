@@ -4,6 +4,7 @@
       <div>
         <%= form_with url: talents_path, method: :get, class: "d-flex" do %>
 
+          <div></div>
           <label for="all"><i class="fa-solid fa-democrat fa-2x icon"></i><span>All</span></label>
           <%= radio_button_tag :talent_type, "", false, id: 'all', hidden: true %>
 
