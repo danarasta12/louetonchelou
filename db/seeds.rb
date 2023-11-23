@@ -19,6 +19,9 @@ puts "Creating 20 users"
     chelou?: [true, false].sample
   )
 
+  file = URI.open('https://source.unsplash.com/random/?face')
+  user.profile_picture.attach(io: file, filename: "#{user.last_name}.png", content_type: 'image/png')
+  
   puts "#{user.first_name} created"
 
   if user.chelou?
@@ -31,7 +34,7 @@ puts "Creating 20 users"
       price: rand(10..500).to_f,
       performance_duration: rand(10..120).to_s,
       # medias: "https://source.unsplash.com/random/?party",
-      description: Faker::Movies::HarryPotter.quote
+      description: Faker::Movies::HarryPotter.quote,
     )
     file = URI.open('https://source.unsplash.com/random/?party')
     talent.medias.attach(io: file, filename: "#{talent.pseudo}.png", content_type: 'image/png')
