@@ -28,7 +28,6 @@ img {
 }
 
 .card-review {
-    overflow: hidden;
     height: 50px;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     display: flex;
@@ -46,4 +45,13 @@ img {
 
 .tab-content {
   padding-bottom: 30px;
+}
+
+.centered-container {
+  margin-right: auto;
+  width: 50%;
+}
+
+.tab-pane #profile {
+  display: flex;
 }

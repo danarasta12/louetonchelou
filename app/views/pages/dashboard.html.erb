@@ -33,8 +33,8 @@
             <p>Description: <%= booking.talent.description %></p>
             <p>From <%= booking.start_date %> to <%= booking.end_date %> - <%= booking.address %></p>
             <p>Price: <%= booking.talent.price %> €</p>
-            <%= link_to "Write a Review", new_booking_review_path(booking), class: 'light-link', 'data-bs-toggle' => 'modal', 'data-bs-target' => "#review_popup#{booking.talent.id}" %> <span class='light-link'>|</span>
-            <%= link_to "Cancel your booking", booking_path(booking), class: 'light-link', data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to cancel this booking with #{booking.talent.pseudo}?" } %>
+            <i class="fa-solid fa-pen-nib"></i><%= link_to "Write a Review", new_booking_review_path(booking), class: 'light-link', 'data-bs-toggle' => 'modal', 'data-bs-target' => "#review_popup#{booking.talent.id}" %> <span class='light-link'>|</span>
+            <i class="fa-regular fa-circle-xmark"></i><%= link_to "Cancel your booking", booking_path(booking), class: 'light-link', data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to cancel this booking with #{booking.talent.pseudo}?" } %>
           </div>
         </div>
         <!-- Modal -->
@@ -68,38 +68,40 @@
 
 
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-      <h2>Your account <%= @user.first_name %></h2>
-      <div class="card-profile">
-        <div class="card-data">
-          <h5>Name</h5>
-          <p><%= @user.first_name %> <%= @user.last_name %></p>
+      <div class="centered-container">
+        <h2>Your account <%= @user.first_name %></h2>
+        <div class="card-profile">
+          <div class="card-data">
+            <h5>Name</h5>
+            <p><%= @user.first_name %> <%= @user.last_name %></p>
+          </div>
+          <div class="card-data">
+            <h5>Email</h5>
+            <p><%= @user.email %></p>
+          </div>
+          <div class="card-data">
+            <h5>Date of Birth</h5>
+            <p><%= @user.date_of_birth %></p>
+          </div>
+          <div class="card-data">
+            <h5>Sex</h5>
+            <p><%= @user.sex %></p>
+          </div>
+          <div class="card-data">
+            <h5>Address</h5>
+            <p><%= @user.address %></p>
+          </div>
+          <div class="card-data">
+            <h5>Phone</h5>
+            <p><%= @user.phone %></p>
+          </div>
+          <div class="card-data">
+            <h5>Description</h5>
+            <p><%= @user.description %></p>
+          </div>
         </div>
-        <div class="card-data">
-          <h5>Email</h5>
-           <p><%= @user.email %></p>
-        </div>
-        <div class="card-data">
-          <h5>Date of Birth</h5>
-          <p><%= @user.date_of_birth %></p>
-        </div>
-        <div class="card-data">
-          <h5>Sex</h5>
-          <p><%= @user.sex %></p>
-        </div>
-        <div class="card-data">
-          <h5>Address</h5>
-          <p><%= @user.address %></p>
-        </div>
-        <div class="card-data">
-          <h5>Phone</h5>
-          <p><%= @user.phone %></p>
-        </div>
-        <div class="card-data">
-          <h5>Description</h5>
-          <p><%= @user.description %></p>
-        </div>
+        <%= link_to "Edit my profile", edit_user_registration_path, class: "btn btn-flat" %>
       </div>
-      <%= link_to "Edit my profile", edit_user_registration_path, class: "btn btn-flat" %>
     </div>
 
 
@@ -121,8 +123,8 @@
             <p>Description: <%= talent.description %></p>
             <p>Performance duration: <%= talent.performance_duration %></p>
             <p>Price: <%= talent.price %> €</p>
-            <%= link_to "Edit your talent", edit_talent_path(talent), class: 'light-link' %> <span class='light-link'>|</span>
-            <%= link_to "Remove your talent", talent_path(talent), class: 'light-link', data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this talent?" } %>
+            <i class="fa-solid fa-wand-magic-sparkles"></i><%= link_to "Edit your talent", edit_talent_path(talent), class: 'light-link' %> <span class='light-link'>|</span>
+            <i class="fa-regular fa-circle-xmark"></i><%= link_to "Remove your talent", talent_path(talent), class: 'light-link', data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this talent?" } %>
           </div>
         </div>
       <% end %>
@@ -135,7 +137,7 @@
               <p>Performance: <%= link_to booking.talent.talent_type, talent_path(booking.talent), class: "colored-link" %></p>
               <p>Customer contact: <%= booking.user.first_name %> <%= booking.user.last_name %> | <%= booking.user.phone %></p>
               <p>Price: <%= booking.talent.price %> €</p>
-              <%= link_to "Cancel your booking", booking_path(booking), class: 'light-link', data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to cancel this booking with #{booking.user.first_name}?" } %>
+              <i class="fa-regular fa-circle-xmark"></i><%= link_to "Cancel your booking", booking_path(booking), class: 'light-link', data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to cancel this booking with #{booking.user.first_name}?" } %>
             </div>
           </div>
         <% end %>
