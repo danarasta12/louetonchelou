@@ -33,7 +33,7 @@
         <% if @user.profile_picture.attached? %>
           <img class="avatar" src="<%= cl_image_path(@user.profile_picture.key) %>" alt="">
         <% else %>
-          <%= asset_path('mimi.jpeg') %>
+          <img class="avatar" src="<%= asset_path('mimi.jpeg') %>" alt="">
         <% end %>
       </div>
       <div class="talent">
