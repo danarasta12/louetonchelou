@@ -3,15 +3,13 @@
   <div class="talent-infos-recap">
     <p><%= @talent.working_area %></p>
     <p><%= @talent.talent_type %></p>
-    <div class="ratings">
-      <% if @talent.reviews.any? %>
-        <% total_ratings = @talent.reviews.pluck(:rating).compact.sum %>
-        <% average_rating = total_ratings.to_f / @talent.reviews.count %>
-        <p> <%= average_rating.round(2) %><i class="fa-solid fa-star"></i></p>
-      <% else %>
-        <p> No ratings yet </p>
-      <% end %>
-    </div>
+    <% if @talent.reviews.any? %>
+      <% total_ratings = @talent.reviews.pluck(:rating).compact.sum %>
+      <% average_rating = total_ratings.to_f / @talent.reviews.count %>
+      <p> <%= average_rating.round(2) %><i class="fa-solid fa-star"></i></p>
+    <% else %>
+      <p> No ratings yet </p>
+    <% end %>
     <p>Nombre de reviews : <%= @talent.reviews.length %></p>
   </div>
 </div>
@@ -30,10 +28,10 @@
 <div class="container">
   <div class="content">
     <div class="left-info">
-      <div class="pseuso-picture">
+      <div class="pseudo-picture">
         <h3><%= @talent.pseudo %></h3>
         <% if @user.profile_picture.attached? %>
-          <%= cl_image_tag(@user.profile_picture.key) %>
+          <img class="avatar" src="<%= cl_image_path(@user.profile_picture.key) %>" alt="">
         <% else %>
           <%= asset_path('mimi.jpeg') %>
         <% end %>
@@ -53,7 +51,7 @@
     </div>
     <div class="right-info">
       <div class="card-book">
-        <h4><%= @talent.price %>€</h4>
+        <h4><%= number_with_precision(@talent.price, precision: 2)%>€</h4>
         <div class="ratings">
           <% if @talent.reviews.any? %>
             <% total_ratings = @talent.reviews.pluck(:rating).compact.sum %>
