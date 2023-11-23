@@ -3,17 +3,26 @@
   <div class="talent-infos-recap">
     <p><%= @talent.working_area %></p>
     <p><%= @talent.talent_type %></p>
+    <div class="ratings">
+      <% if @talent.reviews.any? %>
+        <% total_ratings = @talent.reviews.pluck(:rating).compact.sum %>
+        <% average_rating = total_ratings.to_f / @talent.reviews.count %>
+        <p> <%= average_rating.round(2) %><i class="fa-solid fa-star"></i></p>
+      <% else %>
+        <p> No ratings yet </p>
+      <% end %>
+    </div>
+    <p>Nombre de reviews : <%= @talent.reviews.length %></p>
   </div>
 </div>
 
 <div class="container">
   <div class="parent">
-    <div class="big-photo">
-    </div>
-    <div class="small-photo"></div>
-    <div class="small-photo"></div>
-    <div class="small-photo"></div>
-    <div class="small-photo"> </div>
+    <div class="big-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @talent.medias.attached? ? cl_image_path(@talent.medias.first.key) :asset_path('mimi.jpg') %>)"></div>
+    <div class="small-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @talent.medias.attached? ? cl_image_path(@talent.medias.first.key) :asset_path('mimi.jpg') %>)"></div>
+    <div class="small-photo-top-right" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @talent.medias.attached? ? cl_image_path(@talent.medias.first.key) :asset_path('mimi.jpg') %>)"></div>
+    <div class="small-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @talent.medias.attached? ? cl_image_path(@talent.medias.first.key) :asset_path('mimi.jpg') %>)"></div>
+    <div class="small-photo-bottom-right" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @talent.medias.attached? ? cl_image_path(@talent.medias.first.key) :asset_path('mimi.jpg') %>)"></div>
   </div>
 </div>
 
@@ -21,7 +30,17 @@
 <div class="container">
   <div class="content">
     <div class="left-info">
-      <h3><%= @talent.pseudo %> - <%= @talent.talent_type %></h3>
+      <div class="pseuso-picture">
+        <h3><%= @talent.pseudo %></h3>
+        <% if @user.profile_picture.attached? %>
+          <%= cl_image_tag(@user.profile_picture.key) %>
+        <% else %>
+          <%= asset_path('mimi.jpeg') %>
+        <% end %>
+      </div>
+      <div class="talent">
+        <h5><%= @talent.talent_type %></h5>
+      </div>
       <p><%= @talent.description %></p>
       <div class="reviews">
          <% @talent.reviews.each do |review| %>
@@ -35,13 +54,16 @@
     <div class="right-info">
       <div class="card-book">
         <h4><%= @talent.price %>€</h4>
-       <% if @talent.reviews.any? %>
-        <% total_ratings = @talent.reviews.pluck(:rating).compact.sum %>
-        <% average_rating = total_ratings.to_f / @talent.reviews.count %>
-        <p> <%= average_rating.round(2) %><i class="fa-solid fa-star"></i></p>
-      <% else %>
-        <p> No ratings yet </p>
-      <% end %>
+        <div class="ratings">
+          <% if @talent.reviews.any? %>
+            <% total_ratings = @talent.reviews.pluck(:rating).compact.sum %>
+            <% average_rating = total_ratings.to_f / @talent.reviews.count %>
+            <p> <%= average_rating.round(2) %><i class="fa-solid fa-star"></i></p>
+          <% else %>
+            <p> No ratings yet </p>
+          <% end %>
+          <p><strong><%= @talent.reviews.length %></strong> reviews</p>
+        </div>
         <div class="form-wrapper">
           <h3>Book <%= @talent.pseudo %></h3>
           <%= simple_form_for [@talent, @booking] do |f| %>
