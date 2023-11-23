@@ -68,39 +68,66 @@
 
 
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-      <div class="centered-container">
-        <h2>Your account <%= @user.first_name %></h2>
-        <div class="card-profile">
-          <div class="card-data">
-            <h5>Name</h5>
-            <p><%= @user.first_name %> <%= @user.last_name %></p>
-          </div>
-          <div class="card-data">
-            <h5>Email</h5>
-            <p><%= @user.email %></p>
-          </div>
-          <div class="card-data">
-            <h5>Date of Birth</h5>
-            <p><%= @user.date_of_birth %></p>
-          </div>
-          <div class="card-data">
-            <h5>Sex</h5>
-            <p><%= @user.sex %></p>
-          </div>
-          <div class="card-data">
-            <h5>Address</h5>
-            <p><%= @user.address %></p>
-          </div>
-          <div class="card-data">
-            <h5>Phone</h5>
-            <p><%= @user.phone %></p>
-          </div>
-          <div class="card-data">
-            <h5>Description</h5>
-            <p><%= @user.description %></p>
+      <div class="row">
+        <div class="left-container">
+          <div class="inter-left">
+            <div class="white-block">
+              <div class="left-side">
+                <img class="avatar" src="<%= current_user && current_user.profile_picture.attached? ? cl_image_path(current_user.profile_picture.key) :asset_path('mimi.jpeg') %>" alt="">
+                <h4><%= current_user.first_name %></h4>
+              </div>
+              <div class="right-side">
+                <p class="number"><%= @user.bookings.count %></p>
+                <% if @user.bookings.count > 1 %>
+                  <p>bookings</p>
+                <% else %>
+                  <p>booking</p>
+                <% end %>
+                <hr>
+                <p class="number"><%= @user.talents.count %></p>
+                <% if @user.talents.count > 1 %>
+                  <p>talents</p>
+                <% else %>
+                  <p>talent</p>
+                <% end %>
+              </div>
+            </div>
+            <%= link_to "Edit my profile", edit_user_registration_path, class: "btn btn-flat" %>
           </div>
         </div>
-        <%= link_to "Edit my profile", edit_user_registration_path, class: "btn btn-flat" %>
+        <div class="right-container">
+          <h2>Your account</h2>
+          <div class="card-profile">
+            <div class="card-data">
+              <h5>Name</h5>
+              <p><%= @user.first_name %> <%= @user.last_name %></p>
+            </div>
+            <div class="card-data">
+              <h5>Email</h5>
+              <p><%= @user.email %></p>
+            </div>
+            <div class="card-data">
+              <h5>Date of Birth</h5>
+              <p><%= @user.date_of_birth %></p>
+            </div>
+            <div class="card-data">
+              <h5>Sex</h5>
+              <p><%= @user.sex %></p>
+            </div>
+            <div class="card-data">
+              <h5>Address</h5>
+              <p><%= @user.address %></p>
+            </div>
+            <div class="card-data">
+              <h5>Phone</h5>
+              <p><%= @user.phone %></p>
+            </div>
+            <div class="card-data">
+              <h5>Description</h5>
+              <p><%= @user.description %></p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 

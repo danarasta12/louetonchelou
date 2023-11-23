@@ -47,11 +47,18 @@ img {
   padding-bottom: 30px;
 }
 
-.centered-container {
-  margin-right: auto;
-  width: 50%;
+.left-container {
+  flex: 30%;
 }
 
-.tab-pane #profile {
+.right-container {
+  flex: 70%;
+}
+
+.row {
   display: flex;
 }
+
+// .column {
+//   flex: 30%;
+// }
