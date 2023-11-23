@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
     @booking = Booking.find(params[:booking_id])
     @review.booking = @booking
     if @review.save
-      redirect_to talent_path(@booking.talent)
+      redirect_to dashboard_path
     else
       redirect_to dashboard_path
     end
