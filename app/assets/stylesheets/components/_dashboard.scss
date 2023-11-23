@@ -26,3 +26,39 @@ h2 {
 img {
   border-radius: 4px 0 0 4px;
 }
+
+.card-review {
+    height: 50px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    padding-left: 15px;
+}
+
+.card-review p {
+  margin-left: 10px;
+  margin-bottom: 0px;
+  font-style: italic;
+}
+
+.tab-content {
+  padding-bottom: 30px;
+}
+
+.left-container {
+  flex: 30%;
+}
+
+.right-container {
+  flex: 70%;
+}
+
+.row {
+  display: flex;
+}
+
+// .column {
+//   flex: 30%;
+// }

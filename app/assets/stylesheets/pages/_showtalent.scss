@@ -5,14 +5,19 @@
   padding: 0px
 }
 
-.talent-infos-recap{
+.talent-infos-recap {
   display: flex;
-
   p{
     font-size: 16px;
     margin-right: 1em;
     font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    color:rgb(134, 133, 133) ;
   }
+}
+
+.talent{
+  margin: 1em 0px;
 }
 
 .parent {
@@ -96,6 +101,7 @@
 }
 
 
+
 .comment{
   display: flex;
   p{
@@ -108,7 +114,7 @@
 }
 
 h3{
-  margin-top: 15px;
+  margin-top: 5px;
 }
 
 .talent{
@@ -123,7 +129,18 @@ h3{
 
 .ratings{
   display: flex;
+  border-top: 1px solid gba(186, 186, 186, 0.419);
   p{
     margin-right: 10px;
+    font-size: 14px;
+    font-weight: lighter;
+    color:rgb(134, 133, 133);
+    font-style: italic;
   }
+}
+
+.pseudo-picture{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

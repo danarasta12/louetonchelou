@@ -21,7 +21,7 @@ puts "Creating 20 users"
 
   file = URI.open('https://source.unsplash.com/random/?face')
   user.profile_picture.attach(io: file, filename: "#{user.last_name}.png", content_type: 'image/png')
-  
+
   puts "#{user.first_name} created"
 
   if user.chelou?
@@ -29,7 +29,7 @@ puts "Creating 20 users"
     talent = Talent.new(
       user: user,
       pseudo: Faker::Movies::HarryPotter.character,
-      working_area: Faker::Address.state,
+      working_area: ["75", "77", "78", "91", "92", "93", "94", "95"].sample,
       talent_type: ["Cracheur de Feu", "Stripteaseur", "Dompteur de Serpents", "Clown", "Magicien"].sample,
       price: rand(10..500).to_f,
       performance_duration: rand(10..120).to_s,
