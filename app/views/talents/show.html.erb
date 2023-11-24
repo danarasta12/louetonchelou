@@ -16,11 +16,11 @@
 
 <div class="container">
   <div class="parent">
-    <div class="big-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @talent.medias.attached? ? cl_image_path(@talent.medias.first.key) :asset_path('mimi.jpg') %>)"></div>
-    <div class="small-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @talent.medias.attached? ? cl_image_path(@talent.medias.first.key) :asset_path('mimi.jpg') %>)"></div>
-    <div class="small-photo-top-right" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @talent.medias.attached? ? cl_image_path(@talent.medias.first.key) :asset_path('mimi.jpg') %>)"></div>
-    <div class="small-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @talent.medias.attached? ? cl_image_path(@talent.medias.first.key) :asset_path('mimi.jpg') %>)"></div>
-    <div class="small-photo-bottom-right" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @talent.medias.attached? ? cl_image_path(@talent.medias.first.key) :asset_path('mimi.jpg') %>)"></div>
+    <div class="big-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @talent.medias.first.present? ? cl_image_path(@talent.medias.first.key) :asset_path('mimi.jpeg') %>)"></div>
+    <div class="small-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @talent.medias.second.present? ? cl_image_path(@talent.medias.second.key) :asset_path('mimi.jpeg') %>)"></div>
+    <div class="small-photo-top-right" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @talent.medias.third.present? ? cl_image_path(@talent.medias.third.key) :asset_path('mimi.jpeg') %>)"></div>
+    <div class="small-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @talent.medias.fourth.present? ? cl_image_path(@talent.medias.fourth.key) :asset_path('mimi.jpeg') %>)"></div>
+    <div class="small-photo-bottom-right" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @talent.medias.fifth.present? ? cl_image_path(@talent.medias.fifth.key) :asset_path('mimi.jpeg') %>)"></div>
   </div>
 </div>
 

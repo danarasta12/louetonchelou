@@ -26,7 +26,7 @@
           <% if booking.talent.medias.attached?  %>
             <img src="<%= cl_image_path(booking.talent.medias.first.key)%>" class="card-img-top" alt="Talent picture">
           <% else %>
-            <img src="<%= asset_path('magicien.jpg')%>" class="card-img-top" alt="Talent picture">
+            <img src="<%= asset_path('mimi.jpeg')%>" class="card-img-top" alt="Talent picture">
           <% end %>
           <div class="card-booking-infos">
             <h2><%= link_to booking.talent.pseudo.capitalize, talent_path(booking.talent), class: "colored-link" %> - <%= link_to booking.talent.talent_type.capitalize, talent_path(booking.talent), class: "colored-link" %></h2>
@@ -143,7 +143,7 @@
           <% if talent.medias.attached?  %>
             <img src="<%= cl_image_path(talent.medias.first.key)%>" class="card-img-top" alt="Talent picture">
           <% else %>
-            <img src="<%= asset_path('magicien.jpg')%>" class="card-img-top" alt="Talent picture">
+            <img src="<%= asset_path('mimi.jpeg')%>" class="card-img-top" alt="Talent picture">
           <% end %>
           <div class="card-booking-infos">
             <h2><%= link_to talent.talent_type.capitalize, talent_path(talent), class: "colored-link" %> - <%= link_to talent.working_area, talent_path(talent), class: "colored-link" %></h2>
