@@ -11,6 +11,7 @@
 .registration-form-container h2 {
   text-align: center;
   margin-bottom: 20px;
+  margin-top: 20px;
   font-size: 24px;
   font-weight: bold;
 }
@@ -49,4 +50,10 @@
   border-radius: 4px;
   cursor: pointer;
   width: 100%;
+}
+
+.centered-link {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
 }

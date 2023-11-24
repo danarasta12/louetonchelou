@@ -3,24 +3,27 @@
 
   <%= simple_form_for @talent do |f| %>
     <div class="form-group">
-      <%= f.input :pseudo, class: "form-control" %>
+      <%= f.input :pseudo, class: "form-control", placeholder: "Jeannot le rigolo" %>
+    </div>
+
+    <div class="form-group row">
+      <div class="col">
+        <%= f.input :price, class: "form-control", input_html: { min: '0', step: 'any' }, :wrapper_html => { :style => 'display: inline' } %>
+      </div>
+
+      <div class="col">
+        <%= f.input :performance_duration, class: "form-control", :wrapper_html => { :style => 'display: inline' } %>
+      </div>
+    </div>
+    <br>
+    <div class="form-group">
+      <%= f.input :working_area, collection: [["Paris (75)", "75"], ["Hauts-de-Seine (92)", "92"], ["Seine-Saint-Denis (93)", "93"], ["Val-de-Marne (94)", "94"], ["Seine-et-Marne (77)", "77"], ["Yvelines (78)", "78"], ["Essonne (91)", "91"], ["Val-d'Oise (95)", "95"]], include_blank: "Select Working Area", class: "form-select", label_method: :first, value_method: :last, label: false %>
     </div>
 
     <div class="form-group">
-      <%= f.input :working_area, collection: [["Paris (75)", "75"], ["Hauts-de-Seine (92)", "92"], ["Seine-Saint-Denis (93)", "93"], ["Val-de-Marne (94)", "94"], ["Seine-et-Marne (77)", "77"], ["Yvelines (78)", "78"], ["Essonne (91)", "91"], ["Val-d'Oise (95)", "95"]], include_blank: "Select Working Area", class: "form-select", label_method: :first, value_method: :last %>
+      <%= f.input :talent_type, collection: ['Magicien', 'Cracheur de Feu', 'Dompteur de Serpent', 'Stripteaseur', 'Clown'], include_blank: "Select Talent type", class: "form-select", label: false %>
     </div>
 
-    <div class="form-group">
-      <%= f.input :talent_type, collection: ['Magicien', 'Cracheur de Feu', 'Dompteur de Serpent', 'Stripteaseur', 'Clown'], include_blank: "Select Talent type", class: "form-select" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.input :price, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.input :performance_duration, class: "form-control" %>
-    </div>
 
     <div class="form-group">
       <%= f.label :medias, "Medias" %>
