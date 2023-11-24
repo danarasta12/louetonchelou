@@ -2,8 +2,11 @@
   width:100%;
   margin: 0px auto;
   padding: 0px;
-  // background-color: white;
-  // padding: 8px;
+}
+
+.container-cracheur {
+  background-color: white;
+  padding: 8px 16px 8px 16px;
 }
 
 .cont-top {
@@ -51,22 +54,22 @@
   border-bottom-left-radius: 15px;
 }
 .small-photo {
-  width: 100%; /* Adjust size as needed */
-  height: calc((400px - 11px) / 2); /* Adjust height as needed */
+  width: 100%;
+  height: calc((400px - 11px) / 2);
   background-size: cover;
   background-position: center;
 }
 .small-photo-top-right {
-  width: 100%; /* Adjust size as needed */
-  height: calc((400px - 11px) / 2); /* Adjust height as needed */
+  width: 100%;
+  height: calc((400px - 11px) / 2);
   background-size: cover;
   background-position: center;
   border-top-right-radius: 15px;
 }
 
 .small-photo-bottom-right {
-  width: 100%; /* Adjust size as needed */
-  height: calc((400px - 11px) / 2); /* Adjust height as needed */
+  width: 100%;
+  height: calc((400px - 11px) / 2);
   background-size: cover;
   background-position: center;
   border-bottom-right-radius: 15px;
@@ -75,21 +78,21 @@
 .content {
   display: flex;
   margin-top: 20px;
-  margin-bottom: 15px; /* Adjust margin as needed */
+  margin-bottom: 15px;
 }
 
 .left-info {
-  flex:1; /* Takes up 50% of the width */
-  padding-right: 20px; /* Adjust spacing */
+  flex:1;
+  padding-right: 20px;
 }
 
 .right-info {
-  flex: 0.7; /* Takes up 50% of the width */
+  flex: 0.7;
   display: flex;
-  justify-content: flex-end; /* Align content to the right */
+  justify-content: flex-end;
   .card-book {
     width: 95%;
-    background-color: #f5f5f5; /* Example background color for the card */
+    background-color: #f5f5f5;
     padding: 20px;
     border-radius: 5px;
     text-align: left;
@@ -159,4 +162,15 @@ h3{
 
 .hr-show {
   color: 1px solid rgba(186, 186, 186, 0.419);
+}
+
+.cracheur {
+  background-image: asset_url("flammes.gif");
+  position: fixed;
+  background-size: cover;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
 }
