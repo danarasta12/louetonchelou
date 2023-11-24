@@ -2,11 +2,12 @@
   color: white;
   padding: 8px 24px;
   border-radius: 4px;
-  background: $dark-red;
+  background: $orange;
   transition: background 0.3s ease;
 }
 
 .btn-flat:hover {
-  background: $medium-red;
+  background: $light-orange;
   color: white;
 }
+

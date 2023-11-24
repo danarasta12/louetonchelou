@@ -20,4 +20,13 @@ footer {
 
 .right-content a:hover {
   color: $black;
-}
+ }
+  
+.fa-instagram, .fa-github {
+  color: $orange;
+  transition: 0.3 ease-in-out;
+  &:hover{
+    color: $light-orange;
+  }
+ }
+

@@ -41,7 +41,7 @@
       <div class="talent">
         <h5><%= @talent.talent_type %></h5>
       </div>
-      <p><%= @talent.description %></p>
+      <p id='description-review'><%= @talent.description %></p>
       <div class="reviews">
         <br>
         <% @talent.reviews.each do |review| %>
