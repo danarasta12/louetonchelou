@@ -25,13 +25,11 @@
           <%= text_field_tag :query,
             params[:query],
             class: "form-control",
-            placeholder: "ex: 75"
-          %>
+            placeholder: "ex: 75" %>
 
           <button type="submit" class="btn btn-index">
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
-
         <% end %>
       </div>
 
@@ -52,15 +50,15 @@
 
             <div class="card-body">
               <h5 class="card-title"><%= talent.pseudo %></h5>
-              <p class="card-text"><%= talent.talent_type %></p>
+              <p class="card-text"><%= talent.talent_type %> - <%= talent.working_area %></p>
 
               <div class="price-rating">
-                <p><%= talent.price %> €</p>
+                <p><%= number_with_precision(talent.price, precision: 2) %> €</p>
 
                 <% if talent.reviews.any? %>
                   <% total_ratings = talent.reviews.pluck(:rating).compact.sum %>
                   <% average_rating = total_ratings.to_f / talent.reviews.count %>
-                  <p> <%= average_rating.round(2) %><i class=“fa-solid fa-star”></i></p>
+                  <p> <%= average_rating.round(2) %> <i class="fa-solid fa-star"></i></p>
                 <% else %>
                   <p> No rating yet </p>
                 <% end %>

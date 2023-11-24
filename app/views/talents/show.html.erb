@@ -41,11 +41,9 @@
       </div>
       <p><%= @talent.description %></p>
       <div class="reviews">
+        <br>
         <% @talent.reviews.each do |review| %>
-          <div class="comment">
-            <p><%= review.comment %></p>
-            <p><%= review.rating %><i class="fa-solid fa-star"></i></p>
-          </div>
+          <p><i class="fa-solid fa-star"></i><%= review.rating %>/5 "<%= review.comment %>"</p>
         <% end %>
       </div>
     </div>
@@ -84,3 +82,4 @@
 <%# @talent.medias.each do |photo|
 cl_image_tag photo.key, height: 300, width: 400, crop: :fill
 end %>
+
