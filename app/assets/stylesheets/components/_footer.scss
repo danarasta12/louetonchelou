@@ -1,22 +1,7 @@
-$footer-height: 10vh;
-
-footer {
-  position: fixed;
-  bottom: 0;
-}
-
-.left-content {
-  display: flex;
-  align-items: center;
-}
-
-.right-content a {
-  margin-left: 10px;
-  color: $light-orange;
-  text-decoration: none;
-  font-size: 20px;
-}
-
-.right-content a:hover {
-  color: $black;
+.fa-instagram, .fa-github {
+  color: $orange;
+  transition: 0.3 ease-in-out;
+  &:hover{
+    color: $light-orange;
+  }
 }
