@@ -1,4 +1,6 @@
-<div class="container-show cont-top">
+<div class=<%= 'cracheur' if @talent.talent_type == 'Cracheur de Feu' %>></div>
+
+<div class="container-show <%= 'container-cracheur' if @talent.talent_type == 'Cracheur de Feu' %>  cont-top">
   <h2><%= @talent.pseudo %></h2>
   <div class="talent-infos-recap">
     <p><%= @talent.working_area %></p>
@@ -14,7 +16,7 @@
   </div>
 </div>
 
-<div class="container-show">
+<div class="container-show <%= 'container-cracheur' if @talent.talent_type == 'Cracheur de Feu' %> ">
   <div class="parent">
     <div class="big-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @talent.medias.first.present? ? cl_image_path(@talent.medias.first.key) :asset_path('mimi.jpeg') %>)"></div>
     <div class="small-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @talent.medias.second.present? ? cl_image_path(@talent.medias.second.key) :asset_path('mimi.jpeg') %>)"></div>
@@ -25,7 +27,7 @@
 </div>
 
 
-<div class="container-show cont-bot">
+<div class="container-show <%= 'container-cracheur' if @talent.talent_type == 'Cracheur de Feu' %>  cont-bot">
   <div class="content">
     <div class="left-info">
       <div class="pseudo-picture">
