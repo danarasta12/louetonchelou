@@ -25,7 +25,9 @@ puts "Creating 20 users"
   puts "#{user.first_name} created"
 
   if user.chelou?
+
     puts "Creating talent for #{user.first_name}"
+
     talent = Talent.new(
       user: user,
       pseudo: Faker::Movies::HarryPotter.character,
@@ -36,13 +38,24 @@ puts "Creating 20 users"
       # medias: "https://source.unsplash.com/random/?party",
       description: Faker::Movies::HarryPotter.quote,
     )
-    file = URI.open('https://source.unsplash.com/random/?party')
-    talent.medias.attach(io: file, filename: "#{talent.pseudo}.png", content_type: 'image/png')
+    talent_images_path = Rails.root.join("app", "assets", "images", talent.talent_type.parameterize(separator: '_'))
+    images_in_folder = Dir.glob("#{talent_images_path}/*")
+    selected_images = images_in_folder.shuffle
 
-    talent.save!
-    puts "#{talent.pseudo} created"
+    unless selected_images.empty?
+      selected_images.each do |selected_image|
+        file = File.open(selected_image)
+        talent.medias.attach(io: file, filename: File.basename(selected_image))
+        talent.save!
+      end
+    else
+      puts "No image found for"
+    end
   end
 end
+
+# file = URI.open('https://source.unsplash.com/random/?party')
+# talent.medias.attach(io: file, filename: "#{talent.pseudo}.png", content_type: 'image/png')
 # Booking.create(
 #   start_date: Date.new(2023, rand(1..12), rand(1..29)),
 #   end_date: Date.new(2023, 12, 12),
