@@ -39,7 +39,7 @@ puts "Creating 20 users"
       description: Faker::Movies::HarryPotter.quote,
     )
     talent_images_path = Rails.root.join("assets", "images", talent.talent_type.downcase.parameterize(separator: '_'))
-    images_in_folder = Dir.glob("#{talent_images_path}/*")
+    images_in_folder = Dir.glob(Rails.root.join("assets", "images", talent.talent_type.downcase.parameterize(separator: '_')))
     selected_images = images_in_folder.shuffle
       puts talent_images_path
       puts images_in_folder
