@@ -4,6 +4,7 @@ footer {
   position: fixed;
   bottom: 0;
   background-color: white;
+  width: 100%;
 }
 
 .left-content {
@@ -21,7 +22,7 @@ footer {
 .right-content a:hover {
   color: $black;
  }
-  
+
 .fa-instagram, .fa-github {
   color: $orange;
   transition: 0.3 ease-in-out;
@@ -29,4 +30,3 @@ footer {
     color: $light-orange;
   }
  }
-
