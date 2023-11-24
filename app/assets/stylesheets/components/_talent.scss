@@ -84,9 +84,9 @@ label {
 }
 
 .btn-index {
-  background-color: blue;
   border-radius: 50%;
   height: 45px;
+  border: none;
 }
 
 .curseur {
@@ -96,6 +96,7 @@ label {
 
 .curseur:hover {
   opacity: 1;
+  color: $light-orange;
 }
 
 .span-opacity {
@@ -104,4 +105,8 @@ label {
 
 .span-opacity:hover {
   opacity: 1;
+}
+
+.fa-magnifying-glass:hover {
+  color: $light-orange;
 }
