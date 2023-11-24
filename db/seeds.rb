@@ -41,7 +41,6 @@ puts "Creating 20 users"
     talent_images_path = Rails.root.join("assets", "images", talent.talent_type.downcase.parameterize(separator: '_'))
     images_in_folder = Dir.glob("#{talent_images_path}/*")
     selected_images = images_in_folder.shuffle
-      puts Rails.root
       puts talent_images_path
       puts images_in_folder
     unless selected_images.empty?
