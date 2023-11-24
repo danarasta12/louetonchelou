@@ -15,10 +15,11 @@ class UsersController < ApplicationController
   end
 
   def edit
+    raise
   end
-
   def update
     if @user.update(user_params)
+      raise
       redirect_to user_path(@user)
     else
       render :new, status: :unprocessable_entity
@@ -37,6 +38,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :sex, :date_of_birth, :phone, :description, :address, profile_picture: [])
+    params.require(:user).permit(:first_name, :last_name, :email, :sex, :date_of_birth, :phone, :description, :address, :profile_picture)
   end
 end
