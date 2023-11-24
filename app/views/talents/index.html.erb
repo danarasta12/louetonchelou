@@ -4,23 +4,22 @@
       <div>
         <%= form_with url: talents_path, method: :get, class: "d-flex" do %>
 
-          <div></div>
-          <label for="all"><i class="fa-solid fa-democrat fa-2x icon"></i><span>All</span></label>
+          <label for="all"><i class="fa-solid fa-democrat fa-2x icon curseur"></i><span class="span-opacity">All</span></label>
           <%= radio_button_tag :talent_type, "", false, id: 'all', hidden: true %>
 
-          <label for="magicien"><i class="fa-solid fa-wand-magic-sparkles fa-2x icon"></i><span>Magicien</span></label>
+          <label for="magicien"><i class="fa-solid fa-wand-magic-sparkles fa-2x icon curseur"></i><span class="span-opacity">Magicien</span></label>
           <%= radio_button_tag :talent_type, "Magicien", false, id: 'magicien', hidden: true %>
 
-          <label for="clown"><i class="fa-solid fa-face-grin-squint-tears fa-2x icon"></i><span>Clown</span></label>
+          <label for="clown"><i class="fa-solid fa-face-grin-squint-tears fa-2x icon curseur"></i><span class="span-opacity">Clown</span></label>
           <%= radio_button_tag :talent_type, "Clown", false, id: 'clown', hidden: true %>
 
-          <label for="cracheur"><i class="fa-solid fa-fire fa-2x icon"></i><span>Cracheur Feu</span></label>
+          <label for="cracheur"><i class="fa-solid fa-fire fa-2x icon curseur"></i><span class="span-opacity">Cracheur Feu</span></label>
           <%= radio_button_tag :talent_type, "Cracheur de Feu", false, id: 'cracheur', hidden: true %>
 
-          <label for="dompteur"><i class="fa-solid fa-staff-snake fa-2x icon"></i><span>Dompteur Serpents</span></label>
+          <label for="dompteur"><i class="fa-solid fa-staff-snake fa-2x icon curseur"></i><span class="span-opacity">Dompteur Serpents</span></label>
           <%= radio_button_tag :talent_type, "Dompteur de Serpents", false, id: 'dompteur', hidden: true %>
 
-          <label for="strip"><i class="fa-solid fa-venus fa-2x icon"></i><span>Striptease</span></label>
+          <label for="strip"><i class="fa-solid fa-venus fa-2x icon curseur"></i><span class="span-opacity">Striptease</span></label>
           <%= radio_button_tag :talent_type, "Stripteaseur", false, id: 'strip', hidden: true %>
 
           <%= text_field_tag :query,
@@ -29,7 +28,7 @@
             placeholder: "ex: 75"
           %>
 
-          <button type="submit" class="btn btn-primary">
+          <button type="submit" class="btn btn-index">
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
 
@@ -56,7 +55,7 @@
               <p class="card-text"><%= talent.talent_type %></p>
 
               <div class="price-rating">
-                <p><%= talent.price %></p>
+                <p><%= talent.price %> €</p>
 
                 <% if talent.reviews.any? %>
                   <% total_ratings = talent.reviews.pluck(:rating).compact.sum %>

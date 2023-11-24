@@ -82,3 +82,26 @@ label {
   justify-content: space-between;
   display: flex;
 }
+
+.btn-index {
+  background-color: blue;
+  border-radius: 50%;
+  height: 45px;
+}
+
+.curseur {
+  cursor: pointer;
+  opacity: 0.2;
+}
+
+.curseur:hover {
+  opacity: 1;
+}
+
+.span-opacity {
+  opacity: 0.8;
+}
+
+.span-opacity:hover {
+  opacity: 1;
+}
