@@ -39,7 +39,7 @@
       <div class="talent">
         <h5><%= @talent.talent_type %></h5>
       </div>
-      <p><%= @talent.description %></p>
+      <p id='description-review'><%= @talent.description %></p>
       <div class="reviews">
         <br>
         <% @talent.reviews.each do |review| %>
@@ -82,4 +82,3 @@
 <%# @talent.medias.each do |photo|
 cl_image_tag photo.key, height: 300, width: 400, crop: :fill
 end %>
-
