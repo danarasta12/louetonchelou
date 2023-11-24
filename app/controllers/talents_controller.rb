@@ -20,11 +20,9 @@ class TalentsController < ApplicationController
 
   def index
     @talents = Talent.all
-
     if params[:talent_type].present?
       @talents = @talents.where(talent_type: params[:talent_type])
     end
-
     if params[:query].present?
       @talents = @talents.where("working_area ILIKE ?", "%#{params[:query]}%")
     end

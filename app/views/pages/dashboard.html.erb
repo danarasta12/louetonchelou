@@ -149,8 +149,8 @@
             <h2><%= link_to talent.talent_type.capitalize, talent_path(talent), class: "colored-link" %> - <%= link_to talent.working_area, talent_path(talent), class: "colored-link" %></h2>
             <p>Description: <%= talent.description %></p>
             <p>Performance duration: <%= talent.performance_duration %></p>
-            <p>Price: <%= talent.price %> €</p>
-            <i class="fa-solid fa-wand-magic-sparkles"></i><%= link_to "Edit your talent", edit_talent_path(talent), class: 'light-link' %> <span class='light-link'>|</span>
+            <p>Price: <%= number_with_precision(talent.price, precision: 2) %> €</p>
+            <i class="fa-solid fa-wand-magic-sparkles baguette"></i><%= link_to "Edit your talent", edit_talent_path(talent), class: 'light-link' %> <span class='light-link'>|</span>
             <i class="fa-regular fa-circle-xmark"></i><%= link_to "Remove your talent", talent_path(talent), class: 'light-link', data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this talent?" } %>
           </div>
         </div>
@@ -163,7 +163,7 @@
               <h2><%= booking.start_date %> to <%= booking.end_date %> | <%= booking.address %></h2>
               <p>Performance: <%= link_to booking.talent.talent_type, talent_path(booking.talent), class: "colored-link" %></p>
               <p>Customer contact: <%= booking.user.first_name %> <%= booking.user.last_name %> | <%= booking.user.phone %></p>
-              <p>Price: <%= booking.talent.price %> €</p>
+              <p>Price: <%= number_with_precision(booking.talent.price, precision: 2) %> €</p>
               <i class="fa-regular fa-circle-xmark"></i><%= link_to "Cancel your booking", booking_path(booking), class: 'light-link', data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to cancel this booking with #{booking.user.first_name}?" } %>
             </div>
           </div>
