@@ -43,7 +43,7 @@
       <div class="reviews">
         <br>
         <% @talent.reviews.each do |review| %>
-          <p><i class="fa-solid fa-star"></i><%= review.rating %>/5 "<%= review.comment %>"</p>
+          <p><i class="fa-solid fa-star"></i> <%= review.rating %>/5 "<%= review.comment %>"</p>
         <% end %>
       </div>
     </div>
@@ -54,7 +54,7 @@
           <% if @talent.reviews.any? %>
             <% total_ratings = @talent.reviews.pluck(:rating).compact.sum %>
             <% average_rating = total_ratings.to_f / @talent.reviews.count %>
-            <p> <%= average_rating.round(2) %><i class="fa-solid fa-star"></i></p>
+            <p> <%= average_rating.round(2) %> <i class="fa-solid fa-star"></i></p>
           <% else %>
             <p> No rating yet </p>
           <% end %>
