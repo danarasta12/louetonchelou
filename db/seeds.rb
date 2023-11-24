@@ -38,7 +38,7 @@ puts "Creating 20 users"
       # medias: "https://source.unsplash.com/random/?party",
       description: Faker::Movies::HarryPotter.quote,
     )
-    talent_images_path = Rails.root.join("app", "assets", "images", talent.talent_type.parameterize(separator: '_'))
+    talent_images_path = Rails.root.join("assets", "images", talent.talent_type.downcase.parameterize(separator: '_'))
     images_in_folder = Dir.glob("#{talent_images_path}/*")
     selected_images = images_in_folder.shuffle
       puts Rails.root
