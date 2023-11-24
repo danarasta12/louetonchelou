@@ -51,3 +51,5 @@ end
 
 puts "1 booking created"
 puts "Done"
+
+'Cracheur de feu'
