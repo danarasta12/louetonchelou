@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-show cont-top">
   <h2><%= @talent.pseudo %></h2>
   <div class="talent-infos-recap">
     <p><%= @talent.working_area %></p>
@@ -14,7 +14,7 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container-show">
   <div class="parent">
     <div class="big-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @talent.medias.first.present? ? cl_image_path(@talent.medias.first.key) :asset_path('mimi.jpeg') %>)"></div>
     <div class="small-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @talent.medias.second.present? ? cl_image_path(@talent.medias.second.key) :asset_path('mimi.jpeg') %>)"></div>
@@ -25,7 +25,7 @@
 </div>
 
 
-<div class="container">
+<div class="container-show cont-bot">
   <div class="content">
     <div class="left-info">
       <div class="pseudo-picture">
@@ -41,7 +41,7 @@
       </div>
       <p><%= @talent.description %></p>
       <div class="reviews">
-         <% @talent.reviews.each do |review| %>
+        <% @talent.reviews.each do |review| %>
           <div class="comment">
             <p><%= review.comment %></p>
             <p><%= review.rating %><i class="fa-solid fa-star"></i></p>

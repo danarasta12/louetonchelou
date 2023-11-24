@@ -1,8 +1,20 @@
-
-.container{
+.container-show {
   width:100%;
   margin: 0px auto;
-  padding: 0px
+  padding: 0px;
+  // background-color: white;
+  // padding: 8px;
+}
+
+.cont-top {
+ border-top-left-radius: 20px;
+ border-top-right-radius: 20px;
+}
+
+.cont-bot {
+ border-bottom-left-radius: 20px;
+ border-bottom-right-radius: 20px;
+ margin-bottom: 40px;
 }
 
 .talent-infos-recap {
